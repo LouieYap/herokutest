@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  min_messages: warning
+  database: login_app
+beta:
+  adapter: postgresql
+  min_messages: warning
+  database: pv_beta
+  url:  <%= ENV["DATABASE_URL"] %>
+  # We need to account for the 20 sidekiq workers and the 5 puma workers
+  pool: <%= ENV["DB_POOL"] || 25 %>
+test:
+  adapter: postgresql
+  min_messages: warning
+  database: pv_test
+production:
+  adapter: postgresql
+  min_messages: warning
+  database: pv_production
+  url:  <%= ENV["DATABASE_URL"] %>
+  # We need to account for the 20 sidekiq workers and the 5 puma workers
+  pool: <%= ENV["DB_POOL"] || 25 %>
